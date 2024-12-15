@@ -1,26 +1,39 @@
 package ec.edu.uce.paymentsdemo.classes;
 
+import ec.edu.uce.paymentsdemo.jpa.Entities.PaymentMethod;
+import ec.edu.uce.paymentsdemo.jpa.services.PaymentMethodService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 @QualifierPay("Transfer")
 public class TransferPayment extends Payment  {
 
+    @Inject
+    private PaymentMethodService paymentMethodService;
+
+
+    private PaymentMethod paymentMethod;
+
     public TransferPayment() {
         super();
+
     }
     @PostConstruct
     public void init() {
         System.out.println("TransferPayment init");
+        paymentMethod = paymentMethodService.findByIdS("CreditCard");
+        this.description = paymentMethod.getDescription();
+        this.detail = paymentMethod.getDetails();
     }
 
     @Override
     public String pay(Payment payment) {
         return String.format("Transfer Pay " + '\'' +
                 "detail = '" + payment.getDetail() + '\'' +
-                ", amount = " + payment.getAmount());
+                ", description = " + payment.getDescription());
     }
 
     @PreDestroy

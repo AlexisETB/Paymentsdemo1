@@ -1,10 +1,12 @@
 package ec.edu.uce.paymentsdemo.jpa.Entities;
 
 import ec.edu.uce.paymentsdemo.classes.Payment;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
 
 @Entity
 @Table
+@ApplicationScoped
 public class PaymentMethod {
 
     @Id

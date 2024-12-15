@@ -1,11 +1,16 @@
 package ec.edu.uce.paymentsdemo.jpa.services;
 import ec.edu.uce.paymentsdemo.jpa.Entities.PaymentMethod;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import java.util.List;
 
+@ApplicationScoped
 public class PaymentMethodService implements CrudService<PaymentMethod> {
+
+    public PaymentMethodService() {}
+
     @PersistenceContext
     private EntityManager em;
 
@@ -29,6 +34,15 @@ public class PaymentMethodService implements CrudService<PaymentMethod> {
     @Override
     @Transactional
     public PaymentMethod findById(Long id) {
+        try {
+            return em.find(PaymentMethod.class, id);
+        }catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(), e.getCause());
+        }
+    }
+
+    @Transactional
+    public PaymentMethod findByIdS(String id) {
         try {
             return em.find(PaymentMethod.class, id);
         }catch (Exception e) {

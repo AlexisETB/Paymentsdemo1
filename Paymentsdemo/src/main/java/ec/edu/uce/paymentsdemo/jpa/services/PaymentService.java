@@ -1,13 +1,17 @@
 package ec.edu.uce.paymentsdemo.jpa.services;
 
 import ec.edu.uce.paymentsdemo.jpa.Entities.PaymentDetail;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
 
+@ApplicationScoped
 public class PaymentService implements CrudService<PaymentDetail> {
+    public PaymentService() {}
+
     @PersistenceContext
     private EntityManager em;
 

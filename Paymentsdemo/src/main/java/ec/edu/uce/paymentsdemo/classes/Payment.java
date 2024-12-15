@@ -2,11 +2,11 @@ package ec.edu.uce.paymentsdemo.classes;
 
 public abstract class Payment implements IPay {
     protected String detail;
-    protected double amount;
+    protected String description;
 
-    public Payment(String detail, double amount) {
+    public Payment(String detail, String description) {
         this.detail = detail;
-        this.amount = amount;
+        this.description = description;
     }
 
     public Payment() {
@@ -20,17 +20,17 @@ public abstract class Payment implements IPay {
         this.detail = detail;
     }
 
-    public double getAmount() {
-        return amount;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmount(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return String.format("detail='" + detail + '\'' +
-                ", amount=" + amount);
+                ", description=" + description);
     }
 }
