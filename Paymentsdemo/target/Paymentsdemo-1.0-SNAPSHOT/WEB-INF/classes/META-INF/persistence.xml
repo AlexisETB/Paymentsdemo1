@@ -9,8 +9,8 @@
         <class>ec.edu.uce.paymentsdemo.jpa.Entities.PaymentMethod</class>
         <class>ec.edu.uce.paymentsdemo.jpa.Entities.PaymentDetail</class>
         <properties>
-            <!-- Configuración JDBC para postgresql -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/paymentdb"/>
+
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://some-mysql:3306/paymentdb"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="1234"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
@@ -20,6 +20,10 @@
             <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- Modificar si es necesario -->
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.generate_statistics" value="true" />
+            <property name="org.hibernate.SQL" value="DEBUG" />
+            <property name="hibernate.hbm2ddl.import_files" value="import.sql" />
+
         </properties>
     </persistence-unit>
 </persistence>

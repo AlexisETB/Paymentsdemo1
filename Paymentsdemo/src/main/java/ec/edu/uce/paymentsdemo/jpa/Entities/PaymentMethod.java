@@ -9,17 +9,17 @@ public class PaymentMethod {
 
     @Id
     @Column(length = 50)
-    private String id; // Ej: "PayPal", "CreditCard", "BankTransfer"
+    private String id;
 
     private String description;
 
     @Lob
-    private String details; // JSON u otra información específica del método de pago
+    private String details;
 
     public PaymentMethod() {
     }
 
-    // Getters and setters
+
     public String getId() {
         return id;
     }
